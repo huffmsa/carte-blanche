@@ -11,7 +11,7 @@ LOG_PATH = os.environ.get('LOG_PATH', path.join(TMP_PATH, 'log'))
 LOG_FORMAT = '%(name)s %(asctime)s %(message)s'
 
 
-def logger(name, log_path = LOG_PATH):
+def create_logger(name, log_path = LOG_PATH):
 
     log_path = log_path or LOG_PATH
     path_exists = os.path.isdir(log_path)
@@ -53,6 +53,6 @@ def logger(name, log_path = LOG_PATH):
 
     coloredlogs.install(logger=log)
 
-    print "Initializing logs at %s" % filepath
+    print("Initializing logs at %s" % filepath)
 
     return log
