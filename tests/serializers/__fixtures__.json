@@ -1,0 +1,17 @@
+{
+  "test_sha": {
+    "test_array": {
+      "hashed_data": "833a35e261cf3c23ceae28b30402dbee1a1f98f58fda6b7b6c328307d6b5f01f"
+    },
+    "test_string": {
+      "hashed_data": "1cad511098c63164caf2a407feeaa3b0438ab3481e0feabcd8c1a4898189dd2f"
+    },
+    "test_byte_string": {
+      "hashed_data": "50276eafd98d6f50ac470cf176fc2cfc8ec1ba0461a32cac9cfbbc7071ca5328"
+    },
+    "test_unicode_string": {
+      "hashed_data": "1cad511098c63164caf2a407feeaa3b0438ab3481e0feabcd8c1a4898189dd2f"
+    }
+  },
+  "test_md5": {}
+}

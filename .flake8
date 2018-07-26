@@ -1,0 +1,11 @@
+[flake8]
+max-line-length = 88
+select = C,E,F,W,B,B950
+ignore = E501,E402
+exclude =
+    .git,
+    __pycache__,
+    experiments,
+    virtualenv,
+    pytest_cache
+max-complexity = 12

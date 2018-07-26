@@ -1,6 +1,6 @@
 import os
-import sys
 import logging
+from logging import handlers
 import coloredlogs
 
 
@@ -11,7 +11,7 @@ LOG_PATH = os.environ.get('LOG_PATH', path.join(TMP_PATH, 'log'))
 LOG_FORMAT = '%(name)s %(asctime)s %(message)s'
 
 
-def create_logger(name, log_path = LOG_PATH):
+def create_logger(name, log_path=LOG_PATH):
 
     log_path = log_path or LOG_PATH
     path_exists = os.path.isdir(log_path)
@@ -31,25 +31,24 @@ def create_logger(name, log_path = LOG_PATH):
 
     label = '%s:instance-%s' % (name, log_id)
 
-    filename = '%s.log' % name
+    filename = '%s.log' % name.replace(':', '.')
     filepath = path.join(instance_log_path, filename)
 
     try:
         os.mkdir(instance_log_path)
     except Exception as ex:
-        print(ex)
         pass
 
+    logging.basicConfig(format=LOG_FORMAT)
 
-    logging.basicConfig(format = LOG_FORMAT)
-    
     # logging.basicConfig(format = LOG_FORMAT, level = logging.DEBUG)
 
     log = logging.getLogger(label)
     # log.setLevel('NOSET')
 
-    log.addHandler(logging.FileHandler(filepath))
-    # log.addHandler(logging.StreamHandler(sys.stderr))
+    log.addHandler(handlers.RotatingFileHandler(filepath,
+                   maxBytes=10000000,
+                   backupCount=2))
 
     coloredlogs.install(logger=log)
 
