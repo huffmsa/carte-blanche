@@ -1,0 +1,21 @@
+{
+  "dict_schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  },
+  "file_schema": "/home/huffmsa/the-skeleton-company/projects/misc/skeleton-python-utils/tests/fixtures/validator_file_schema.json",
+  "bad_file_schema": "/home/huffmsa/the-skeleton-company/projects/misc/skeleton-python-utils/tests/fixtures/validator_bad_file_schema.json",
+  "missing_file_schema": "/home/huffmsa/the-skeleton-company/projects/misc/skeleton-python-utils/tests/fixtures/validator_file_schem.json",
+  "good_input": {
+        "name": "foo"
+  },
+  "bad_input": {
+    "name": "foo",
+    "key": "bar"
+  }
+}
