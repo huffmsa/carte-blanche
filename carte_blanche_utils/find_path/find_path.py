@@ -15,7 +15,6 @@ def walk(keyfile=KEYFILE, start_file=__file__):
     '''walks backwards up path tree to find the project source directory'''
     hot_path = ''
     start_location = path.dirname(path.abspath(start_file))
-    print(start_location)
     current_location = start_location
 
     root_toggle = False
