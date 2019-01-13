@@ -1,31 +1,42 @@
 from setuptools import setup, find_packages
- 
- 
+
+
 packages = find_packages(exclude=['tests'])
 
 print('packages')
 print(packages)
 
 setup(name='skeleton_utils',
- 
-      version='0.1',
- 
+
+      version='0.2',
+
       url='https://github.com/the-skeleton-company/skeleton-python-utils',
- 
+
       license='MIT',
- 
+
       author='Sam Huffman',
- 
+
       author_email='huffmsa@gmail.com',
- 
+
       description='Collection of commonly used utilities at the skeleton company',
- 
+
       packages=find_packages(exclude=['tests']),
- 
+
       long_description=open('README.md').read(),
- 
+
       zip_safe=False,
- 
-      setup_requires=[],
- 
+
+      setup_requires=[
+            "atomicwrites==1.1.5",
+            "attrs==18.1.0",
+            "coloredlogs==10.0",
+            "humanfriendly==4.16.1",
+            "jsonschema==2.6.0",
+            "more-itertools==4.3.0",
+            "pluggy==0.7.1",
+            "py==1.5.4",
+            "pytest==3.7.2",
+            "six==1.11.0"
+      ],
+
       test_suite='')

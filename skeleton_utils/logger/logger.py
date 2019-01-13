@@ -44,7 +44,6 @@ def create_logger(name, log_path=LOG_PATH):
     # logging.basicConfig(format = LOG_FORMAT, level = logging.DEBUG)
 
     log = logging.getLogger(label)
-    # log.setLevel('NOSET')
 
     log.addHandler(handlers.RotatingFileHandler(filepath,
                    maxBytes=10000000,
