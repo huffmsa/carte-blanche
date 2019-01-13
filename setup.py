@@ -6,11 +6,11 @@ packages = find_packages(exclude=['tests'])
 print('packages')
 print(packages)
 
-setup(name='skeleton_utils',
+setup(name='carte_blanche_utils',
 
       version='0.2',
 
-      url='https://github.com/the-skeleton-company/skeleton-python-utils',
+      url='https://github.com/huffmsa/carte-blanche-python-utils',
 
       license='MIT',
 
@@ -18,7 +18,7 @@ setup(name='skeleton_utils',
 
       author_email='huffmsa@gmail.com',
 
-      description='Collection of commonly used utilities at the skeleton company',
+      description='Collection of commonly used utilities at the Carte Blanche companies',
 
       packages=find_packages(exclude=['tests']),
 

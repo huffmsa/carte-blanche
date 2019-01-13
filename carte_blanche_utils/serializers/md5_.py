@@ -7,10 +7,10 @@ import json
 from importlib import import_module
 from hashlib import md5
 
-from skeleton_utils.find_path.find_path import walk
+from carte_blanche_utils.find_path.find_path import walk
 walk()
 
-errors = import_module('skeleton_utils.serializers.__errors__')
+errors = import_module('carte_blanche_utils.serializers.__errors__')
 
 
 def hash(data):
@@ -23,7 +23,7 @@ def hash(data):
         except AttributeError as attribute_error:
             args = {'message': str(attribute_error)}
 
-            exception = errors.SkeletonSerializerUnHashableDataTypeException(args)
+            exception = errors.CarteBlancheSerializerUnHashableDataTypeException(args)
 
             raise exception
 
@@ -35,7 +35,7 @@ def hash(data):
         return hashed_data
 
     except Exception as exception:
-        base_exception = errors.SkeletonSerializerException()
+        base_exception = errors.CarteBlancheSerializerException()
 
         raise base_exception
 

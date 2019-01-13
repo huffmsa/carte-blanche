@@ -6,12 +6,12 @@ Generic wrapper for md5 generator
 import os
 import json
 from importlib import import_module
-from skeleton_utils.find_path import find_path
+from carte_blanche_utils.find_path import find_path
 ROOT_PATH = find_path.walk().replace('/virtualenv', '')
 
-from skeleton_utils.serializers.sha_ import hash
-from skeleton_utils.serializers.salt import create
-errors = import_module('skeleton_utils.serializers.__errors__')
+from carte_blanche_utils.serializers.sha_ import hash
+from carte_blanche_utils.serializers.salt import create
+errors = import_module('carte_blanche_utils.serializers.__errors__')
 
 fixture_path = os.path.join(ROOT_PATH, 'tests', 'serializers', '__fixtures__.json')
 print(fixture_path)
@@ -81,6 +81,6 @@ def test_file_data_array():
     }
     try:
         hashed_data, hashed_salt = hash(ARGS)
-    except errors.SkeletonSerializerUnHashableDataTypeException as exception:
+    except errors.CarteBlancheSerializerUnHashableDataTypeException as exception:
 
         assert exception.code == 1001

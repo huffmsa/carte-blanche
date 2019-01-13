@@ -4,11 +4,11 @@ Generic wrapper for md5 generator
 ----------------------------------------------------------------------
 '''
 from importlib import import_module
-from skeleton_utils.find_path import find_path
+from carte_blanche_utils.find_path import find_path
 find_path.walk()
 
-from skeleton_utils.serializers.md5_ import hash
-errors = import_module('skeleton_utils.serializers.__errors__')
+from carte_blanche_utils.serializers.md5_ import hash
+errors = import_module('carte_blanche_utils.serializers.__errors__')
 
 
 def test_json_list():
@@ -47,6 +47,6 @@ def test_file_data_array():
     DATA = open('./tests/fixtures/serializers/test_file.txt')
     try:
         hashed_data = hash(DATA)
-    except errors.SkeletonSerializerUnHashableDataTypeException as exception:
+    except errors.CarteBlancheSerializerUnHashableDataTypeException as exception:
 
         assert exception.code == 1001

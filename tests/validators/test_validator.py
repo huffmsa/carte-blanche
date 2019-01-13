@@ -6,11 +6,11 @@ Generic wrapper for validator
 import os
 import json
 from importlib import import_module
-from skeleton_utils.find_path import find_path
+from carte_blanche_utils.find_path import find_path
 ROOT_PATH = find_path.walk().replace('/virtualenv', '')
 
-from skeleton_utils.validators.validator import Validator
-errors = import_module('skeleton_utils.validators.__errors__')
+from carte_blanche_utils.validators.validator import Validator
+errors = import_module('carte_blanche_utils.validators.__errors__')
 
 fixture_path = os.path.join(ROOT_PATH, 'tests', 'validators', '__fixtures__.json')
 
@@ -34,8 +34,8 @@ def test_dict_schema():
 
     try:
         validator.validate(bad_input)
-    except errors.SkeletonUtilsValidatorValidationException as exception:
-        assert isinstance(exception, errors.SkeletonUtilsValidatorValidationException)
+    except errors.CarteBlancheUtilsValidatorValidationException as exception:
+        assert isinstance(exception, errors.CarteBlancheUtilsValidatorValidationException)
 
 
 def test_file_schema():
@@ -50,8 +50,8 @@ def test_file_schema():
 
     try:
         validator.validate(bad_input)
-    except errors.SkeletonUtilsValidatorValidationException as exception:
-        assert isinstance(exception, errors.SkeletonUtilsValidatorValidationException)
+    except errors.CarteBlancheUtilsValidatorValidationException as exception:
+        assert isinstance(exception, errors.CarteBlancheUtilsValidatorValidationException)
 
 
 def test_bad_file_schema():
@@ -60,8 +60,8 @@ def test_bad_file_schema():
     validator = Validator()
     try:
         validator.schema(schema)
-    except errors.SkeletonUtilsValidatorSchemaException as exception:
-        assert isinstance(exception, errors.SkeletonUtilsValidatorSchemaException)
+    except errors.CarteBlancheUtilsValidatorSchemaException as exception:
+        assert isinstance(exception, errors.CarteBlancheUtilsValidatorSchemaException)
 
 
 def test_missing_file_schema():
@@ -70,5 +70,5 @@ def test_missing_file_schema():
     validator = Validator()
     try:
         validator.schema(schema)
-    except errors.SkeletonUtilsValidatorSchemaException as exception:
-        assert isinstance(exception, errors.SkeletonUtilsValidatorSchemaException)
+    except errors.CarteBlancheUtilsValidatorSchemaException as exception:
+        assert isinstance(exception, errors.CarteBlancheUtilsValidatorSchemaException)

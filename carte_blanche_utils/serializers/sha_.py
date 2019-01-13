@@ -8,10 +8,10 @@ from importlib import import_module
 from hashlib import sha256
 import hmac
 
-from skeleton_utils.find_path.find_path import walk
+from carte_blanche_utils.find_path.find_path import walk
 walk()
 
-errors = import_module('skeleton_utils.serializers.__errors__')
+errors = import_module('carte_blanche_utils.serializers.__errors__')
 
 
 def hash(args):
@@ -26,7 +26,7 @@ def hash(args):
         except AttributeError as attribute_error:
             exception_args = {'message': str(attribute_error)}
 
-            exception = errors.SkeletonSerializerUnHashableDataTypeException(exception_args)
+            exception = errors.CarteBlancheSerializerUnHashableDataTypeException(exception_args)
 
             raise exception
 
@@ -39,7 +39,7 @@ def hash(args):
         except AttributeError as attribute_error:
             exception_args = {'message': str(attribute_error)}
 
-            exception = errors.SkeletonSerializerUnHashableDataTypeException(exception_args)
+            exception = errors.CarteBlancheSerializerUnHashableDataTypeException(exception_args)
 
             raise exception
 
@@ -53,13 +53,13 @@ def hash(args):
         return hashed_data, hashed_salt
 
     except Exception as exception:
-        base_exception = errors.SkeletonSerializerException()
+        base_exception = errors.CarteBlancheSerializerException()
 
         raise base_exception
 
 
 if __name__ == '__main__':
-    from skeleton_utils.serializers.salt import create
+    from carte_blanche_utils.serializers.salt import create
     SALT = create()
     JSON_DATA = [1, 2, 3]
 
@@ -75,5 +75,5 @@ if __name__ == '__main__':
 
     try:
         print(hash({'salt': SALT, 'data': FILE_DATA}))
-    except errors.SkeletonSerializerUnHashableDataTypeException as exception:
+    except errors.CarteBlancheSerializerUnHashableDataTypeException as exception:
         print(exception.exception)

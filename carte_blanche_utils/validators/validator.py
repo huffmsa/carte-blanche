@@ -7,10 +7,10 @@ import json
 import jsonschema
 from importlib import import_module
 
-from skeleton_utils.find_path.find_path import walk
+from carte_blanche_utils.find_path.find_path import walk
 walk()
 
-errors = import_module('skeleton_utils.validators.__errors__')
+errors = import_module('carte_blanche_utils.validators.__errors__')
 
 
 class Validator(object):
@@ -30,7 +30,7 @@ class Validator(object):
                     self.schema_ = json.load(sp)
             except Exception as exception:
 
-                vaildator_exception = errors.SkeletonUtilsValidatorSchemaException({'exception': exception})
+                vaildator_exception = errors.CarteBlancheUtilsValidatorSchemaException({'exception': exception})
 
                 raise vaildator_exception
         elif isinstance(schema_path, dict):
@@ -48,7 +48,7 @@ class Validator(object):
             ve_string = str(validation_error.message)
             # print(ve_string)
 
-            vaildator_exception = errors.SkeletonUtilsValidatorValidationException({'exception': ve_string})
+            vaildator_exception = errors.CarteBlancheUtilsValidatorValidationException({'exception': ve_string})
 
 
 
@@ -77,5 +77,5 @@ if __name__ == '__main__':
 
     try:
         print(validator.validate(input_))
-    except errors.SkeletonUtilsValidatorValidationException as exception:
+    except errors.CarteBlancheUtilsValidatorValidationException as exception:
         print(exception.exception)
