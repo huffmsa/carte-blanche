@@ -8,7 +8,7 @@ print(packages)
 
 setup(name='carte_blanche_utils',
 
-      version='0.3',
+      version='0.4',
 
       url='https://github.com/huffmsa/carte-blanche-python-utils',
 

@@ -11,46 +11,52 @@ LOG_PATH = os.environ.get('LOG_PATH', path.join(TMP_PATH, 'log'))
 LOG_FORMAT = '%(name)s %(asctime)s %(message)s'
 
 
-def create_logger(name, log_path=LOG_PATH):
+def create_logger(name, log_path=LOG_PATH, log_to_file=False):
 
-    log_path = log_path or LOG_PATH
-    path_exists = os.path.isdir(log_path)
+    if log_to_file:
+        log_path = log_path or LOG_PATH
+        path_exists = os.path.isdir(log_path)
 
-    if not path_exists:
+        if not path_exists:
+            try:
+                os.mkdir(log_path)
+            except Exception as ex:
+                print(ex)
+        else:
+            pass
+
+        hostname = os.environ.get('HOSTNAME', 'localhost')
+        log_id = 'instance-%s' % hostname
+
+        instance_log_path = path.join(log_path, log_id)
+
+        # label = '%s:instance-%s' % (name, log_id)
+
+        filename = '%s.log' % name.replace(':', '.')
+        filepath = path.join(instance_log_path, filename)
+
         try:
-            os.mkdir(log_path)
+            os.mkdir(instance_log_path)
+            print("Initializing logs at %s" % filepath)
+
         except Exception as ex:
-            print(ex)
-    else:
-        pass
-
-    hostname = os.environ.get('HOSTNAME', 'localhost')
-    log_id = 'instance-%s' % hostname
-
-    instance_log_path = path.join(log_path, log_id)
-
-    label = '%s:instance-%s' % (name, log_id)
-
-    filename = '%s.log' % name.replace(':', '.')
-    filepath = path.join(instance_log_path, filename)
-
-    try:
-        os.mkdir(instance_log_path)
-    except Exception as ex:
-        pass
+            pass
 
     logging.basicConfig(format=LOG_FORMAT)
 
     # logging.basicConfig(format = LOG_FORMAT, level = logging.DEBUG)
 
-    log = logging.getLogger(label)
+    log = logging.getLogger(name)
 
-    log.addHandler(handlers.RotatingFileHandler(filepath,
-                   maxBytes=10000000,
-                   backupCount=2))
+    if log_to_file:
+        log.addHandler(handlers.RotatingFileHandler(filepath,
+                       maxBytes=10000000,
+                       backupCount=2))
+
+    # else:
+        # log.addHandler(logging.StreamHandler())
 
     coloredlogs.install(logger=log)
 
-    print("Initializing logs at %s" % filepath)
 
     return log
