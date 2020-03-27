@@ -6,8 +6,8 @@ Generic wrapper for validator
 import os
 import json
 from importlib import import_module
-from carte_blanche_utils.find_path import find_path
-ROOT_PATH = find_path.walk().replace('/virtualenv', '')
+from carte_blanche_utils.find_path import walk
+ROOT_PATH = walk()
 
 from carte_blanche_utils.validators.validator import Validator
 errors = import_module('carte_blanche_utils.validators.__errors__')
