@@ -6,8 +6,8 @@ Generic wrapper for md5 generator
 import os
 import json
 from importlib import import_module
-from carte_blanche_utils.find_path import find_path
-ROOT_PATH = find_path.walk().replace('/virtualenv', '')
+from carte_blanche_utils.find_path import walk
+ROOT_PATH = walk().replace('/virtualenv', '')
 
 from carte_blanche_utils.serializers.sha_ import hash
 from carte_blanche_utils.serializers.salt import create

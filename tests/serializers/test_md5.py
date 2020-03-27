@@ -4,8 +4,8 @@ Generic wrapper for md5 generator
 ----------------------------------------------------------------------
 '''
 from importlib import import_module
-from carte_blanche_utils.find_path import find_path
-find_path.walk()
+from carte_blanche_utils.find_path import walk
+walk()
 
 from carte_blanche_utils.serializers.md5_ import hash
 errors = import_module('carte_blanche_utils.serializers.__errors__')
