@@ -1,7 +1,6 @@
 astroid==2.3.3
 atomicwrites==1.1.5
 attrs==18.1.0
-carte-blanche-utils==1.0.1
 coloredlogs==10.0
 entrypoints==0.3
 flake8==3.7.9
