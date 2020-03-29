@@ -8,7 +8,7 @@ print(packages)
 
 setup(name='carte_blanche_utils',
 
-      version='1.0',
+      version='1.0.1',
 
       url='https://github.com/huffmsa/carte-blanche-python-utils',
 
@@ -27,16 +27,16 @@ setup(name='carte_blanche_utils',
       zip_safe=False,
 
       setup_requires=[
-            "atomicwrites==1.1.5",
-            "attrs==18.1.0",
-            "coloredlogs==10.0",
-            "humanfriendly==4.16.1",
-            "jsonschema==2.6.0",
-            "more-itertools==4.3.0",
-            "pluggy==0.7.1",
-            "py==1.5.4",
-            "pytest==3.7.2",
-            "six==1.11.0"
+                  "atomicwrites==1.1.5",
+                  "attrs==18.1.0",
+                  "coloredlogs==10.0",
+                  "humanfriendly==4.16.1",
+                  "jsonschema==2.6.0",
+                  "more-itertools==4.3.0",
+                  "pluggy==0.7.1",
+                  "py==1.5.4",
+                  "pytest==3.7.2",
+                  "six==1.11.0"
       ],
 
       test_suite='')
