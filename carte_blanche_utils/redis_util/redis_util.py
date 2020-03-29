@@ -24,6 +24,6 @@ def connect(connection_args={}):
     port = connection_args.get('db_port', REDIS_DB_PORT)
     database = connection_args.get('db_database', REDIS_DB_DATABASE)
 
-    redis_db = redis.Redis(host=db_uri, port=port, db=database, socket_connect_timeout=3)
+    redis_db = redis.Redis(host=db_uri, port=port, db=database, socket_connect_timeout=3, decode_responses=True)
 
     return redis_db
