@@ -1,6 +1,7 @@
 astroid==2.3.3
 atomicwrites==1.1.5
 attrs==18.1.0
+carte-blanche-utils==1.0.3
 coloredlogs==10.0
 entrypoints==0.3
 flake8==3.7.9
@@ -17,6 +18,7 @@ py==1.5.4
 pycodestyle==2.5.0
 pyflakes==2.1.1
 pylint==2.4.4
+pymongo==3.10.1
 pytest==3.7.2
 redis==3.4.1
 six==1.14.0
