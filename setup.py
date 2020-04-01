@@ -9,7 +9,7 @@ print(packages)
 setup(
     name='carte_blanche_utils',
 
-    version='1.0.3',
+    version='1.0.4',
 
     url='https://github.com/huffmsa/carte-blanche-python-utils',
 
@@ -58,7 +58,8 @@ setup(
         "redis==3.4.1",
         "six==1.14.0",
         "SQLAlchemy==1.3.15",
-        "wrapt==1.11.2"
+        "wrapt==1.11.2",
+        "pymongo==3.10.1"
     ],
 
     test_suite=''
