@@ -16,7 +16,7 @@ from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.types import DateTime
 from sqlalchemy.orm import sessionmaker
 
-DB_URI = os.environ.get('POSTGRES_DB_URI', '127.0.01')
+DB_HOST = os.environ.get('POSTGRES_DB_HOST', '127.0.01')
 DB_PORT = os.environ.get('POSTGRES_DB_PORT', '5432')
 DB_USERNAME = os.environ.get('POSTGRES_DB_USERNAME', 'postgres')
 DB_PASSWORD = os.environ.get('POSTGRES_DB_PASSWORD', 'password')
@@ -37,18 +37,18 @@ def orm_connection(connection_args):
     global session
     '''
     connection_args = {
-        'DB_DATABASE':  '',
-        'DB_USERNAME': '',
-        'DB_PASSWORD': '',
-        'DB_URI': '',
-        'DB_PORT': ''
+        'database':  '',
+        'username': '',
+        'password': '',
+        'host': '',
+        'port': ''
     }
     '''
-    dbname = connection_args.get('DB_DATABASE', DB_DATABASE)
-    user = connection_args.get('DB_USERNAME', DB_USERNAME)
-    password = connection_args.get('DB_PASSWORD', DB_PASSWORD)
-    host = connection_args.get('DB_URI', DB_URI)
-    port = connection_args.get('DB_PORT', DB_PORT)
+    dbname = connection_args.get('database', DB_DATABASE)
+    user = connection_args.get('username', DB_USERNAME)
+    password = connection_args.get('password', DB_PASSWORD)
+    host = connection_args.get('host', DB_HOST)
+    port = connection_args.get('port', DB_PORT)
     DB_STRING = f'postgres://{user}:{password}@{host}:{port}/{dbname}'
 
     db_instance = create_engine(DB_STRING, connect_args={'connect_timeout': 10})
@@ -58,23 +58,23 @@ def orm_connection(connection_args):
     base = declarative_base()
     session = Session()
 
-    return {'base': base, 'session': session }
+    return {'base': base, 'session': session}
 
 
 def raw_connection(connection_args={}):
     '''
         connection_args = {
-        'DB_DATABASE':  '',
-        'DB_USERNAME': '',
-        'DB_PASSWORD': '',
-        'DB_URI': '',
-        'DB_PORT': ''}
+        'database':  '',
+        'username': '',
+        'password': '',
+        'host': '',
+        'port': ''}
     '''
-    dbname = connection_args.get('DB_DATABASE', DB_DATABASE)
-    user = connection_args.get('DB_USERNAME', DB_USERNAME)
-    password = connection_args.get('DB_PASSWORD', DB_PASSWORD)
-    host = connection_args.get('DB_URI', DB_URI)
-    port = connection_args.get('DB_PORT', DB_PORT)
+    dbname = connection_args.get('database', DB_DATABASE)
+    user = connection_args.get('username', DB_USERNAME)
+    password = connection_args.get('password', DB_PASSWORD)
+    host = connection_args.get('host', DB_HOST)
+    port = connection_args.get('port', DB_PORT)
 
     connection = None
     try:

@@ -6,23 +6,23 @@ Mongo DB Utilities
 import os
 from pymongo import MongoClient
 
-DB_URI = os.environ.get('MONGO_DB_URI', '127.0.0.1')
+DB_HOST = os.environ.get('MONGO_DB_HOST', '127.0.0.1')
 DB_PORT = os.environ.get('MONGO_DB_PORT', '27017')
 
 
 def raw_connection(connection_args={}):
     '''
         connection_args = {
-        'DB_DATABASE':  '',
-        'DB_USERNAME': '',
-        'DB_PASSWORD': '',
-        'DB_URI': '',
-        'DB_PORT': ''}
+        'database':  '',
+        'username': '',
+        'password': '',
+        'host': '',
+        'port': ''}
     '''
-    user = connection_args.get('DB_USERNAME', None)
-    password = connection_args.get('DB_PASSWORD', None)
-    host = connection_args.get('DB_URI', DB_URI)
-    port = connection_args.get('DB_PORT', DB_PORT)
+    user = connection_args.get('username', None)
+    password = connection_args.get('password', None)
+    host = connection_args.get('host', DB_HOST)
+    port = connection_args.get('port', DB_PORT)
 
     if user is not None and password is not None:
         connection_string = f'mongodb://{user}:{password}@{host}:{port}/'
