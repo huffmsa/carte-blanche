@@ -46,8 +46,8 @@ class Authenticator(object):
         if req.path in self.auth_not_required:
             pass
         else:
-            authorization = self.validator(req)
-            if not authorization:
+            success, authorization = self.validator(req)
+            if not success:
                 return self.authorization_exception(req, resp)
             else:
                 req.params['authorization'] = authorization
