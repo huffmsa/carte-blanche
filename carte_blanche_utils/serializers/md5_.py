@@ -13,46 +13,21 @@ walk()
 errors = import_module('carte_blanche_utils.serializers.__errors__')
 
 
-def hash(data):
-    hasher = md5()
-    try:
-        string_data = json.dumps(data).encode('utf-8')
-    except TypeError as type_error:
-        try:
-            string_data = data.decode('utf-8').encode('utf-8')
-        except AttributeError as attribute_error:
-            args = {'message': str(attribute_error)}
+def hash(data, salt=None):
+    hash_fn = md5()
+    if isinstance(data, dict) or isinstance(data, list):
+        data = json.dumps(data)
+    if not isinstance(data, bytes):
+        data = data.encode('utf-8')
+    hash_fn.update(data)
+    hashed_data = hash_fn.hexdigest()
+    if salt is not None:
+        hash_fn.update(salt.encode('utf-8'))
 
-            exception = errors.CarteBlancheSerializerUnHashableDataTypeException(args)
+        hashed_data = hash_fn.hexdigest()
 
-            raise exception
-
-    try:
-        hasher.update(string_data)
-
-        hashed_data = hasher.hexdigest()
-
-        return hashed_data
-
-    except Exception as exception:
-        base_exception = errors.CarteBlancheSerializerException()
-
-        raise base_exception
+    return hashed_data
 
 
 if __name__ == '__main__':
-    JSON_DATA = [1, 2, 3]
-
-    BYTE_DATA = b'1,2,3'
-    STRING_DATA = '1,2,3'
-    FILE_DATA = open('./tests/fixtures/serializers/test_file.txt')
-    UNICODE_DATA = u'1,2,3'
-
-    print(hash(UNICODE_DATA))
-
-    print(hash(JSON_DATA))
-    print(hash(BYTE_DATA))
-    print(hash(STRING_DATA))
-    print(hash(FILE_DATA))
-
-
+    hashed = hash('123')
