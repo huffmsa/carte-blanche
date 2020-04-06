@@ -5,28 +5,29 @@ Error classses for carte blanche_utils validators
 '''
 
 
-class CarteBlancheUtilsValidatorException(Exception):
-    """docstring for CarteBlancheUtilsValidatorException"""
+class ValidatorException(Exception):
+    """docstring for ValidatorException"""
     def __init__(self):
-        super(CarteBlancheUtilsValidatorException, self).__init__()
+        super(ValidatorException, self).__init__()
 
-class CarteBlancheUtilsValidatorSchemaException(CarteBlancheUtilsValidatorException):
-    """docstring for CarteBlancheUtilsValidatorSchemaException"""
+
+class SchemaException(ValidatorException):
+    """docstring for SchemaException"""
     def __init__(self, args):
-        super(CarteBlancheUtilsValidatorSchemaException, self).__init__()
-
+        super(SchemaException, self).__init__()
+        self.title = args.get('title', 'SchemaException')
         self.exception = {
-            'title': 'CarteBlancheUtilsValidatorSchemaException',
-            'detail': 'Invalid Schema: {0}'.format(args['exception'])
-        }
-
-class CarteBlancheUtilsValidatorValidationException(CarteBlancheUtilsValidatorException):
-    """docstring for CarteBlancheUtilsValidatorValidationException"""
-    def __init__(self, args):
-        super(CarteBlancheUtilsValidatorValidationException, self).__init__()
-        self.exception = {
-            'title': 'CarteBlancheUtilsValidatorValidationException',
-            'detail': 'An exception occurred during validation: {0}'.format(args['exception'])
+            'title': self.title,
+            'detail': f'Invalid Schema: {args["exception"]}'
         }
 
 
+class ValidationException(ValidatorException):
+    """docstring for ValidationException"""
+    def __init__(self, args):
+        super(ValidationException, self).__init__()
+        self.title = args.get('title', 'ValidationException')
+        self.exception = {
+            'title': self.title,
+            'detail': f'An exception occurred during validation: {args["exception"]}'
+        }

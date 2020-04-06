@@ -27,7 +27,7 @@ class Validator(object):
                     return json.load(sp)
             except Exception as exception:
 
-                vaildator_exception = errors.CarteBlancheUtilsValidatorSchemaException({'exception': exception})
+                vaildator_exception = errors.SchemaException({'exception': exception})
 
                 raise vaildator_exception
         elif isinstance(schema_path, dict):
@@ -41,7 +41,7 @@ class Validator(object):
         except jsonschema.exceptions.ValidationError as validation_error:
             ve_string = str(validation_error.message)
 
-            vaildator_exception = errors.CarteBlancheUtilsValidatorValidationException({'exception': ve_string})
+            vaildator_exception = errors.ValidationException({'exception': ve_string})
 
             raise vaildator_exception
 
@@ -62,5 +62,5 @@ if __name__ == '__main__':
 
     try:
         print(validator.validate(input_))
-    except errors.CarteBlancheUtilsValidatorValidationException as exception:
+    except errors.ValidationException as exception:
         print(exception.exception)

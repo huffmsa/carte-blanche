@@ -3,7 +3,6 @@
 Generic wrapper for validator
 ----------------------------------------------------------------------
 '''
-import os
 import json
 from importlib import import_module
 from carte_blanche_utils.find_path import walk
@@ -32,8 +31,8 @@ def test_dict_schema():
 
     try:
         validator.validate(bad_input)
-    except errors.CarteBlancheUtilsValidatorValidationException as exception:
-        assert isinstance(exception, errors.CarteBlancheUtilsValidatorValidationException)
+    except errors.ValidationException as exception:
+        assert isinstance(exception, errors.ValidationException)
 
 
 def test_file_schema():
@@ -47,8 +46,8 @@ def test_file_schema():
 
     try:
         validator.validate(bad_input)
-    except errors.CarteBlancheUtilsValidatorValidationException as exception:
-        assert isinstance(exception, errors.CarteBlancheUtilsValidatorValidationException)
+    except errors.ValidationException as exception:
+        assert isinstance(exception, errors.ValidationException)
 
 
 def test_bad_file_schema():
@@ -56,8 +55,8 @@ def test_bad_file_schema():
 
     try:
         Validator(schema=schema)
-    except errors.CarteBlancheUtilsValidatorSchemaException as exception:
-        assert isinstance(exception, errors.CarteBlancheUtilsValidatorSchemaException)
+    except errors.SchemaException as exception:
+        assert isinstance(exception, errors.SchemaException)
 
 
 def test_missing_file_schema():
@@ -65,5 +64,5 @@ def test_missing_file_schema():
 
     try:
         Validator(schema=schema)
-    except errors.CarteBlancheUtilsValidatorSchemaException as exception:
-        assert isinstance(exception, errors.CarteBlancheUtilsValidatorSchemaException)
+    except errors.SchemaException as exception:
+        assert isinstance(exception, errors.SchemaException)
