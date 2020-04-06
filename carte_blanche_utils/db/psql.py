@@ -33,8 +33,6 @@ def pg_utcnow(element, compiler, **kw):
 
 
 def orm_connection(connection_args):
-    global base
-    global session
     '''
     connection_args = {
         'database':  '',
@@ -58,7 +56,7 @@ def orm_connection(connection_args):
     base = declarative_base()
     session = Session()
 
-    return {'base': base, 'session': session}
+    return {'base': base, 'session': session, 'db_connection': db_connection}
 
 
 def raw_connection(connection_args={}):

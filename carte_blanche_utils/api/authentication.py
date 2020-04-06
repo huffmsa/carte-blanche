@@ -4,10 +4,11 @@ import falcon
 
 class Authenticator(object):
     """docstring for Authenticator"""
-    def __init__(self, args={'auth_not_required': [], 'validator': None}):
+    def __init__(self, args={'auth_not_required': [], 'validator': None, 'args': {}}):
         super(Authenticator, self).__init__()
         self.auth_not_required = args.get('auth_not_required')
         self.validator = args.get('validator')
+        self.validator_args = args.get('args')
 
     def authorization_exception(self, req, resp):
 
@@ -26,9 +27,6 @@ class Authenticator(object):
 
         return resp
 
-    def validate_jwt(self, req):
-        return self.validator(req=req)
-
     def process_request(self, req, resp):
         """Process the request before routing it.
 
@@ -46,7 +44,7 @@ class Authenticator(object):
         if req.path in self.auth_not_required:
             pass
         else:
-            success, authorization = self.validator(req)
+            success, authorization = self.validator(req, self.validator_args)
             if not success:
                 return self.authorization_exception(req, resp)
             else:
