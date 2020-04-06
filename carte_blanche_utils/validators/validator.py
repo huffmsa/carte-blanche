@@ -14,53 +14,39 @@ errors = import_module('carte_blanche_utils.validators.__errors__')
 
 
 class Validator(object):
-    """docstring for Validator"""
-    def __init__(self):
+    """Abstraction for JSON schema validation"""
+    def __init__(self, schema):
         super(Validator, self).__init__()
-        self.schema_ = {}
-        self.validate_= self.validate
+        self.schema = self.set_schema(schema)
 
-
-    def schema(self, schema_path):
+    def set_schema(self, schema_path):
 
         if isinstance(schema_path, str):
-
             try:
                 with open(schema_path) as sp:
-                    self.schema_ = json.load(sp)
+                    return json.load(sp)
             except Exception as exception:
 
                 vaildator_exception = errors.CarteBlancheUtilsValidatorSchemaException({'exception': exception})
 
                 raise vaildator_exception
         elif isinstance(schema_path, dict):
-
-            self.schema_ = schema_path
-
+            return schema_path
 
     def validate(self, input):
-
         try:
-            jsonschema.validate(input, self.schema_)
+            jsonschema.validate(input, self.schema)
             return True
 
         except jsonschema.exceptions.ValidationError as validation_error:
             ve_string = str(validation_error.message)
-            # print(ve_string)
 
             vaildator_exception = errors.CarteBlancheUtilsValidatorValidationException({'exception': ve_string})
-
-
 
             raise vaildator_exception
 
 
-
 if __name__ == '__main__':
-    validator = Validator()
-
-    print(validator)
-
     schema_path = {
         "type": "object",
         "properties": {
@@ -70,10 +56,9 @@ if __name__ == '__main__':
         },
         "additionalProperties": False
     }
+    validator = Validator(schema=schema_path)
 
-    validator.schema(schema_path)
-
-    input_ = {'name': 'foo', 'key': 'bar'}
+    input_ = {'name': 'foo'}
 
     try:
         print(validator.validate(input_))
