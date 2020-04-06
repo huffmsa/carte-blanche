@@ -31,13 +31,14 @@ class BaseRoute(object):
 
         resp.body = json.dumps(body)
 
-    def response_template(self):
+    def response_template(self, endpoint=None, status=falcon.HTTP_200):
         '''genereates response object'''
+        endpoint = endpoint if endpoint is not None else self.endpoint()
         response_data = {
             'meta': {
                 'errors': [],
-                'status': falcon.HTTP_200,
-                'endpoint': self.endpoint()
+                'status': status,
+                'endpoint': endpoint
             },
             'data': {}
         }
