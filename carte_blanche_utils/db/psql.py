@@ -54,9 +54,8 @@ def orm_connection(connection_args):
     Session = sessionmaker(db_connection)
 
     base = declarative_base()
-    session = Session()
 
-    return {'base': base, 'session': session, 'db_connection': db_connection}
+    return {'base': base, 'session': Session, 'db_connection': db_connection}
 
 
 def raw_connection(connection_args={}):
