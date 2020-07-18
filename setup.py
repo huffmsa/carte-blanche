@@ -9,7 +9,7 @@ print(packages)
 setup(
     name='carte_blanche_utils',
 
-    version='1.2.1',
+    version='1.2.2',
 
     url='https://github.com/huffmsa/carte-blanche-python-utils',
 
