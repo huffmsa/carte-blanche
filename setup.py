@@ -41,7 +41,7 @@ setup(
     ],
 
     install_requires=[
-        "astroid==2.3.3",
+        "astroid==2.4.2",
         "atomicwrites==1.1.5",
         "attrs==18.1.0",
         "coloredlogs==10.0",
