@@ -7,9 +7,9 @@ print('packages')
 print(packages)
 
 setup(
-    name='carte_blanche_utils',
+    name='carte_blanche',
 
-    version='1.2.2',
+    version='1.3.5',
 
     url='https://github.com/huffmsa/carte-blanche-python-utils',
 
@@ -28,39 +28,43 @@ setup(
     zip_safe=False,
 
     setup_requires=[
-        "atomicwrites==1.1.5",
-        "attrs==18.1.0",
-        "coloredlogs==10.0",
-        "humanfriendly==4.16.1",
-        "jsonschema==2.6.0",
-        "more-itertools==4.3.0",
-        "pluggy==0.7.1",
-        "py==1.5.4",
-        "pytest==3.7.2",
-        "six==1.11.0"
+        "atomicwrites>=1.4.0",
+        "attrs>=21.2.0",
+        "coloredlogs>=15.0.1",
+        "humanfriendly>=9.2",
+        "jsonschema>=2.6.0",
+        "more-itertools>=4.3.0",
+        "pluggy>=0.7.1",
+        "py>=1.5.4",
+        "pytest>=3.7.2",
+        "six>=1.14.0",
+        "flake8>=3.7.9",
+        "mccabe>=0.6.1",
+        "pycodestyle>=2.5.0"
     ],
 
     install_requires=[
-        "astroid==2.4.2",
-        "atomicwrites==1.1.5",
-        "attrs==18.1.0",
-        "coloredlogs==10.0",
-        "entrypoints==0.3",
-        "humanfriendly==4.16.1",
-        "isort==4.3.21",
-        "jsonschema==2.6.0",
-        "lazy-object-proxy==1.4.3",
-        "more-itertools==4.3.0",
-        "pluggy==0.7.1",
-        "psycopg2==2.8.4",
-        "psycopg2-binary==2.8.4",
-        "py==1.5.4",
-        "redis==3.4.1",
-        "six==1.14.0",
-        "SQLAlchemy==1.3.15",
-        "wrapt==1.11.2",
-        "pymongo==3.10.1",
-        "falcon==2.0.0"
+        "astroid>=2.4.0",
+        "atomicwrites>=1.4.0",
+        "attrs>=21.2.0",
+        "coloredlogs>=15.0.1",
+        "entrypoints>=0.3",
+        "falcon>=2.0.0",
+        "humanfriendly>=9.2",
+        "isort>=4.3.21",
+        "jsonschema>=2.6.0",
+        "lazy-object-proxy>=1.4.3",
+        "psycopg2-binary>=2.9.1",
+        "py>=1.5.4",
+        "pycodestyle>=2.5.0",
+        "pyflakes>=2.1.1",
+        "pylint>=2.5.3",
+        "pymongo>=3.10.1",
+        "redis>=3.4.1",
+        "six>=1.14.0",
+        "SQLAlchemy>=1.3.15",
+        "toml>=0.10.1",
+        "wrapt>=1.11.2"
     ],
 
     test_suite=''
