@@ -63,7 +63,7 @@ setup(
         "pip-autoremove==0.9.1",
         "pluggy==0.7.1",
         "psycopg2-binary==2.9.1",
-        "py==1.5.4",
+        "py==1.10.0",
         "pycodestyle==2.5.0",
         "pycparser==2.20",
         "pyflakes==2.1.1",
