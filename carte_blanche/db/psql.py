@@ -16,7 +16,7 @@ from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.types import DateTime
 from sqlalchemy.orm import sessionmaker
 
-DB_HOST = os.environ.get('POSTGRES_DB_HOST', '127.0.01')
+DB_HOST = os.environ.get('POSTGRES_DB_HOST', '127.0.0.1')
 DB_PORT = os.environ.get('POSTGRES_DB_PORT', '5432')
 DB_USERNAME = os.environ.get('POSTGRES_DB_USERNAME', 'postgres')
 DB_PASSWORD = os.environ.get('POSTGRES_DB_PASSWORD', 'password')

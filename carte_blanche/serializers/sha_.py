@@ -17,13 +17,15 @@ errors = import_module('carte_blanche.serializers.__errors__')
 def hash(data, salt=None):
     if isinstance(data, dict) or isinstance(data, list):
         data = json.dumps(data)
+
     if not isinstance(data, bytes):
         data = data.encode('utf-8')
+
     hasher = hmac.new(data, digestmod=sha256)
     hashed_data = hasher.hexdigest()
+
     if salt is not None:
         hasher.update(salt.encode('utf-8'))
-
         hashed_data = hasher.hexdigest()
 
     return hashed_data

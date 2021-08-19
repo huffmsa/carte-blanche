@@ -17,13 +17,15 @@ def hash(data, salt=None):
     hash_fn = md5()
     if isinstance(data, dict) or isinstance(data, list):
         data = json.dumps(data)
+
     if not isinstance(data, bytes):
         data = data.encode('utf-8')
+
     hash_fn.update(data)
     hashed_data = hash_fn.hexdigest()
+
     if salt is not None:
         hash_fn.update(salt.encode('utf-8'))
-
         hashed_data = hash_fn.hexdigest()
 
     return hashed_data
