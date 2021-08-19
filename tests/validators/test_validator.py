@@ -5,11 +5,11 @@ Generic wrapper for validator
 '''
 import json
 from importlib import import_module
-from carte_blanche_utils.find_path import walk
+from carte_blanche.find_path import walk
 _path = walk(keyfile='README.md', start_file=__file__)
 print(_path)
-from carte_blanche_utils.validators import Validator
-errors = import_module('carte_blanche_utils.validators.__errors__')
+from carte_blanche.validators import Validator
+errors = import_module('carte_blanche.validators.__errors__')
 
 fixture_path = f'{_path}/tests/validators/__fixtures__.json'
 

@@ -3,9 +3,9 @@
 Generic wrapper for md5 generator
 ----------------------------------------------------------------------
 '''
-from carte_blanche_utils.find_path import walk
+from carte_blanche.find_path import walk
 walk()
-from carte_blanche_utils.serializers.sha_ import hash
+from carte_blanche.serializers.sha_ import hash
 
 
 def test_json_list():

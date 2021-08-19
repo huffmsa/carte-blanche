@@ -4,11 +4,11 @@ Generic wrapper for validator
 ----------------------------------------------------------------------
 '''
 
-from carte_blanche_utils.find_path import walk
+from carte_blanche.find_path import walk
 # print(find_path)
 ROOT_PATH = walk(keyfile='setup.cfg')
 
-from carte_blanche_utils.lodash.chunk import chunk
+from carte_blanche.lodash.chunk import chunk
 
 
 def test_chunk():

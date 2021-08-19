@@ -7,10 +7,10 @@ import secrets
 from importlib import import_module
 
 
-from carte_blanche_utils.find_path.find_path import walk
+from carte_blanche.find_path.find_path import walk
 walk()
 
-errors = import_module('carte_blanche_utils.serializers.__errors__')
+errors = import_module('carte_blanche.serializers.__errors__')
 
 
 def create():

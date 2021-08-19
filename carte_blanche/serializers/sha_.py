@@ -8,10 +8,10 @@ from importlib import import_module
 from hashlib import sha256
 import hmac
 
-from carte_blanche_utils.find_path.find_path import walk
+from carte_blanche.find_path.find_path import walk
 walk()
 
-errors = import_module('carte_blanche_utils.serializers.__errors__')
+errors = import_module('carte_blanche.serializers.__errors__')
 
 
 def hash(data, salt=None):
@@ -30,7 +30,7 @@ def hash(data, salt=None):
 
 
 if __name__ == '__main__':
-    from carte_blanche_utils.serializers.salt import create
+    from carte_blanche.serializers.salt import create
     salt = create()
     data = [1, 2, 3]
     hashed = hash(data, salt)

@@ -4,11 +4,11 @@ Generic wrapper for md5 generator
 ----------------------------------------------------------------------
 '''
 from importlib import import_module
-from carte_blanche_utils.find_path import walk
+from carte_blanche.find_path import walk
 _path = walk(keyfile='README.md')
 
-from carte_blanche_utils.serializers.md5_ import hash
-errors = import_module('carte_blanche_utils.serializers.__errors__')
+from carte_blanche.serializers.md5_ import hash
+errors = import_module('carte_blanche.serializers.__errors__')
 
 
 def test_json_list():
