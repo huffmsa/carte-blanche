@@ -49,7 +49,7 @@ setup(
         "attrs==21.2.0",
         "cffi==1.14.6",
         "coloredlogs==15.0.1",
-        "cryptography==3.4.7",
+        "cryptography==39.0.1",
         "entrypoints==0.3",
         "falcon==2.0.0",
         "flake8==3.7.9",
