@@ -70,7 +70,7 @@ setup(
         "pylint==2.5.3",
         "pymongo==3.10.1",
         "pytest==3.7.2",
-        "redis==3.4.1",
+        "redis==4.5.3",
         "SecretStorage==3.3.1",
         "six==1.14.0",
         "SQLAlchemy==1.3.15",
